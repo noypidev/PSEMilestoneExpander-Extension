@@ -1,10 +1,10 @@
 // Copyright (c) 2016 Remus Victuelles
 // Author Email: remus.victuelles@gmail.com
 
-var MutationObserver = window.MutationObserver || window.WebKitMutationObserver;
-var storage = chrome.storage.sync;
-var milestones = document.getElementsByTagName("select");
-var projects = document.getElementsByClassName("projAssigNameDiv");
+var MutationObserver;
+var storage;
+var milestones;
+var projects;
 
 var observer = new MutationObserver(function(mutations, observer) {
     // fired when a mutation occurs
@@ -32,7 +32,21 @@ var observer = new MutationObserver(function(mutations, observer) {
 
 // define what element should be observed by the observer
 // and what types of mutations trigger the callback
-observer.observe(document, {
-    subtree: true,
-    childList: true
-});
+if (document.readyState == "interactive") {
+    if (typeof MutationObserver == 'undefined') {
+        MutationObserver = window.MutationObserver || window.WebKitMutationObserver;
+    }
+    if (typeof storage == 'undefined') {
+        storage = chrome.storage.sync;
+    }
+    if (typeof milestones == 'undefined') {
+        milestones = document.getElementsByTagName("select");
+    }
+    if (typeof projects == 'undefined') {
+        projects = document.getElementsByClassName("projAssigNameDiv");
+    }
+    observer.observe(document, {
+        subtree: true,
+        childList: true
+    });
+}

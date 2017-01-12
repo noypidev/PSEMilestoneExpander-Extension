@@ -10,3 +10,7 @@
 5. Feature: Added options page to set field widths -- clicking on the icon goes to the Chrome Extension options page.
 6. Feature: Expansion now affects both Project/Assignment and Milestone fields. 
 
+*v0.0.3.0*
+1. Technical: Added Lightning Experience (LEX) support
+2. Technical: Optimized code by implementing lazy-loading
+3. Feature: Saving Options will now close the options window

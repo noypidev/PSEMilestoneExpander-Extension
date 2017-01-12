@@ -2,7 +2,7 @@
     "manifest_version": 2,
     "name": "PSE Project/Milestone Expander Plugin",
     "description": "This extension will let you see the entire text of the (usually long) PSE Project and Milestone names",
-    "version": "0.0.2.0",
+    "version": "0.0.3.0",
     "author": "Remus Victuelles (remus.victuelles@gmail.com)",
     "permissions": [
         "tabs",
@@ -10,9 +10,10 @@
         "storage"
     ],
     "content_scripts": [{
-        "matches": ["https://*/apex/TCEntry*"],
+        "matches": ["https://*/apex/TCEntry*", "https://*.lightning.force.com/*"],
         "js": ["content_script.js"],
-        "run_at": "document_end"
+        "run_at": "document_end",
+        "all_frames": true
     }],
     "background": {
         "scripts": ["background.js"],
